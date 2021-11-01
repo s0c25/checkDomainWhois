@@ -16,6 +16,11 @@
 #         'state':                r'Registrant State/Province: *(.+)',
 #         'zipcode':              r'Registrant Postal Code: *(.+)',
 #         'country':              r'Registrant Country: *(.+)',
+#             registrador = 'PDR Ltd. d/b/a PublicDomainRegistry.com'
+#             serverWhois = w.whois_server
+#             expiracion = w.expiration_date
+#             creacion = w.creation_date
+#             dominio = w.name
 
 import whois
 import os
@@ -26,14 +31,9 @@ with open("dominios.txt", "r") as archivo:
     for linea in archivo.read().splitlines():
         try:
             w = whois.whois(linea)
-            registrador = 'PDR Ltd. d/b/a PublicDomainRegistry.com'
             whoiSer = 'whois.publicdomainregistry.com'
+            serverWhois = w.whois_server
 
-            serverWhois = w.whois_server
-            serverWhois = w.whois_server
-            expiracion = w.expiration_date
-            creacion = w.creation_date
-            dominio = w.name
             destFile = r"act.txt"
             if serverWhois == whoiSer:
                 destFile = r"act.txt"
